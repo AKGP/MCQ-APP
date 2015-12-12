@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/glicko.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<title>App</title>
+</head>
+<body>
+<div>
+		<%include header%>
+	</div>
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+		<h3>Question</h3>
+		<textarea id = "question" rows="5" cols="100">
+		</textarea>
+		
+		<h3>Options</h3>
+		<h4>(A)<input id="op1"type="text"><br></h4>
+		<h4>(B)<input id="op2"type="text"><br></h4>
+		<h4>(C)<input id="op3"type="text"><br></h4>
+		<h4>(D)<input id="op4"type="text"><br></h4>
+		</div>
+		<button class="btn btn-primary" id="add">Add</button>	
+		<script>
+		$('#add').click(function(e){
+			e.preventDefault();
+			var question = $('textarea#question').val();
+			console.log(question);
+			var op1 = $('input#op1').val();
+			var op2 = $('input#op2').val();
+			var op3 = $('input#op3').val();
+			var op4 = $('input#op4').val();
+			$.post('');
+		});
+		</script>
+	</div>
+	</div>
+</body>
+</html>

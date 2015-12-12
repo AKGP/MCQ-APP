@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App</title>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/glicko.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+</head>
+<body class="container">
+
+	<div>
+		<%include header%>
+	</div>
+	<div class="row">
+	<div class="col-md-6">
+		<h3><%-question%></h3>
+		<form id="mcq-form">
+		<%for(var i = 0;i<option.length;i++){%>
+		<h3><input type="radio" name="optionsRadios" value=<%=option[i]%> ><%-option[i]%></h3>
+		<%}%>
+
+			<button id="button" class="btn btn-primary">Submit</button>
+		</form>
+		</div>
+	<div class="col-md-4">
+	<h3>Hacker Status</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<td>
+						User Rating
+					</td>
+					<td>
+						Problem Rating
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="user_rating">
+						<%-user_rating%>
+					</td>
+					<td id="rating"><%-rating%></td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+	<script>	
+	$('#button').click(function(e){
+		e.preventDefault();		
+		var data = $('input[name=optionsRadios]:checked','#mcq-form').val();
+		 
+		//console.log(data);
+		var params = {
+			data:data,
+			_id:"5667fd0d915674cf2c1f00e3"
+		};
+		//console.log(params);
+		$.get('/checker',params,function(data){
+			console.log(typeof(data.status));
+			if(data.status=="True"){
+				console.log("Yo are right");
+			}
+			else{
+				console.log("Yo are wrong");
+			}
+			
+		});
+	});
+  	</script>
+</div>
+</body>
+</html>
